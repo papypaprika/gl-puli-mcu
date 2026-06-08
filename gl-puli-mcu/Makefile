@@ -41,9 +41,11 @@ define Package/gl-puli-mcu/description
 endef
 
 define Package/gl-puli-mcu/install
-	$(CP) ./files/* $(1)/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/gl-puli-mcu $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/gl-puli-mcu $(1)/usr/sbin/
 endef
+
 
 $(eval $(call BuildPackage,gl-puli-mcu))
